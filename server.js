@@ -17,6 +17,11 @@ mongoose.connect(
   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );
 
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://vadim:Tim1pwfh@ds019033.mlab.com:19033/heroku_x04pm5w2",
+  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
+);
+
 app.use(routes);
 
 // Send every request to the React app
