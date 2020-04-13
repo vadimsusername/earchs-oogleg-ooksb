@@ -17,19 +17,18 @@ router.route("/")
     console.log(req.body);
     db.Book
       .create(req.body)
-      .then(dbModel => res.json(dbModel))
+      .then(dbBook => res.json(dbBook))
       .catch(err => console.log(err));
   });
 
-/*   .post(booksController.create);
+    router
+    .route("/:id")
+    .delete(function(req,res) {
+        db.Book.deleteOne({_id: req.params.id})
+        .then(dbBook => res.json(dbBook))
+        .catch(err => console.log(err));
+    });
 
-// Matches with "/api/books/:id"
-router
-  .route("/:id")
-  .get(booksController.findById)
-  .put(booksController.update)
-  .delete(booksController.remove);
 
- */
 
 module.exports = router;

@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/googlebooks",
+  process.env.MONGODB_URI || "mongodb://vadim:Tim1pwfh@ds133086.mlab.com:33086/heroku_q92vjh4t",
   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );
 
