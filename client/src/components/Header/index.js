@@ -1,4 +1,12 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
+import "./style.css";
+const styles = {
+  link: {
+    color: "white",
+    margin: "5px"
+  }
+};
 
 function Header() {
   return (
@@ -6,10 +14,11 @@ function Header() {
       <a className="navbar-brand" href="/">
         Google Books
       </a>
-      <div className="navbar-nav">
-        <a className="nav-item nav-link" href="#">Search</a>
-        <a className="nav-item nav-link" href="#">Saved</a>
-      </div>
+      {/* <div className="navbar-nav">
+       
+      </div> */}
+      <Link to="/" style={styles.link}>Saved</Link>
+        <Link to="/search" style={styles.link}>Search</Link> 
     </nav>
   );
 }

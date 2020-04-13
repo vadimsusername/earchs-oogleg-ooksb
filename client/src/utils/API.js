@@ -10,6 +10,9 @@ export default {
       console.log(book)
     return axios.post("/api/books",book);
   },
+  deleteBook: function(id){
+    return axios.delete("/api/books/" + id);
+  },
   search: function(query) {
     return axios.get(urlBase + query);
   }

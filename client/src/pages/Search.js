@@ -1,7 +1,23 @@
 import React, { useEffect, useState, useRef } from "react";
 import Header from "../components/Header";
 import Jumbotron from "../components/Jumbotron";
+import SearchedBook from "../components/SearchedBook";
 import API from "../utils/API";
+
+const styles = {
+    button: {
+      margin: "5px"
+    },
+    results: {
+        width: "80%",
+        margin: "auto"
+    },
+    input: {
+        width: "40%",
+        margin: "auto"
+    }
+  };
+
 function Search() {
     var [foundBooks, setBooks] = useState([]);
     const inputRef = useRef();
@@ -31,13 +47,13 @@ function Search() {
         });
         console.log(saveBook);
         API.saveBook(saveBook).then(res => {
-            return;
+            console.log(res);
         }).catch(err => console.log(err));;
     }
     return (
         <>
             <Jumbotron />
-            <div class="input-group mb-3">
+            <div class="input-group mb-3" style={styles.input}>
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Book: </span>
                 </div>
@@ -47,18 +63,10 @@ function Search() {
                 </div>
             </div>
             <div>
-                <h3>Results</h3>
-                <ul className="list-group">
+                <ul className="list-group" style={styles.results}>
                     {foundBooks.map(item => (
-                        <li className="list-group-item" >
-                            <h3>{item.volumeInfo.title}   </h3>
-                            <h3>{item.volumeInfo.authors.join()}</h3>
-                            <img src={item.volumeInfo.imageLinks.thumbnail} alt="Book Cover"></img>
-                            <h3>{item.volumeInfo.description}</h3>                      
-                            <a href={item.volumeInfo.infoLink}><button >View</button></a> 
-                            <button onClick={handleSave} id={item.id}>Save</button>
-                        </li>
-                    )
+                        <SearchedBook book={item} save={handleSave} />
+                      )
                     )}
                 </ul>
              </div>
